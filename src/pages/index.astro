@@ -1,0 +1,29 @@
+---
+// Astro page for hosting the React Chat component
+import ChatContainer from '../components/Chat/ChatContainer.tsx'; // Ensure this is uncommented
+// import { ChatProvider } from '../context/ChatContext.tsx'; // Context can be added later
+import '../styles/chat.css'; // Import global styles
+
+// TODO: Decide on Astro rendering strategy (SSR, SSG)
+// TODO: Setup ChatProvider if needed globally or within the island
+---
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+	<title>Unorthodox Chat</title>
+</head>
+<body class="bg-gray-200 flex flex-col items-center justify-center min-h-screen p-4">
+	<h1 class="text-2xl font-bold mb-4">Unorthodox Chat UI</h1>
+	<div id="chat-app-container" class="w-full max-w-md h-[70vh] bg-white rounded-xl shadow-lg overflow-hidden">
+		<ChatContainer client:load />
+	</div>
+	<script>
+        // Potential client-side script for initializing things if needed outside React
+        console.log('Astro page loaded');
+	</script>
+	
+</body>
+</html> 
