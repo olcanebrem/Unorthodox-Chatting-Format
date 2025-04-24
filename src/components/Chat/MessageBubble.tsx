@@ -5,29 +5,27 @@ interface MessageBubbleProps {
   message: string;
   isOwn: boolean;
   timestamp?: string;
+  isNewest?: boolean;
 }
 
-const MessageBubble: React.FC<MessageBubbleProps> = ({ message, isOwn, timestamp }) => {
+const MessageBubble: React.FC<MessageBubbleProps> = ({ message, isOwn, timestamp, isNewest }) => {
   const bubbleClasses = isOwn
     ? 'bg-blue-500 text-white'
     : 'bg-gray-300 text-black';
 
   const containerClasses = isOwn ? 'justify-end' : 'justify-start';
 
-  const animationProps = {
-    initial: { 
-        opacity: 0, 
-        x: isOwn ? 50 : -50
-    },
-    animate: { 
-        opacity: 1, 
-        x: 0 
-    },
-    transition: { 
-        duration: 0.3, 
-        ease: "easeOut" 
-    }
-  };
+  const animationProps = isNewest
+    ? {
+        initial: { opacity: 0, scale: 0.85, x: isOwn ? 80 : -80 },
+        animate: { opacity: 1, scale: 1, x: 0 },
+        transition: { duration: 0.35, ease: "easeOut" }
+      }
+    : {
+        initial: { opacity: 0, x: isOwn ? 50 : -50 },
+        animate: { opacity: 1, x: 0 },
+        transition: { duration: 0.3, ease: "easeOut" }
+      };
 
   return (
     <motion.div
