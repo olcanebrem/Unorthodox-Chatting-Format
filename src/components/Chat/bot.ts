@@ -31,7 +31,7 @@ export function startBotMessaging(onMessage: (msg: string) => void): BotStopper 
     const msg = BOT_MESSAGES[Math.floor(Math.random() * BOT_MESSAGES.length)];
     onMessage(msg);
     // Next message in 1-2 seconds
-    const nextDelay = 1000 + Math.random() * 2000;
+    const nextDelay = 2000 + Math.random() * 2000;
     timeoutId = setTimeout(sendRandomMessage, nextDelay);
   }
 

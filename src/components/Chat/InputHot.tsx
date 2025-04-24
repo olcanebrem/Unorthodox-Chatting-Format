@@ -23,8 +23,10 @@ const InputHot: React.FC<InputHotProps> = ({ onMessageChange, onSendMessage }) =
     if (message.trim()) {
       onSendMessage(message); // Mesajı gönder
       setMessage(''); // Inputu temizle
+      onMessageChange(''); // Notify parent input is empty so Hot disappears
     }
   };
+
 
   return (
     <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white p-2 rounded-t-lg shadow-md z-50">
